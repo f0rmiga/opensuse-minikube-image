@@ -1,0 +1,5 @@
+[Virtualization:containers]
+enabled=1
+autorefresh=1
+baseurl=http://download.opensuse.org/repositories/Virtualization:/containers/openSUSE_Leap_15.0
+type=rpm-md
