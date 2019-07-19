@@ -36,7 +36,19 @@ rm /root/virtualization-containers.key
 baseInsertService sshd
 baseInsertService chronyd
 
-ln -sf /lib/systemd/system/docker.service /usr/lib/systemd/system/docker.service
+mkdir -p /etc/systemd/system/docker.service.d/
+cat >> /etc/systemd/system/docker.service.d/20-extra-minikube.conf << 'EOF'
+# Extra settings that don't seem to be picked up by KVM !?
+[Unit]
+After=minikube-automount.service
+Requires=minikube-automount.service
+
+[Service]
+# DOCKER_RAMDISK disables pivot_root in Docker, using MS_MOVE instead.
+Environment=DOCKER_RAMDISK=yes
+
+LimitNOFILE=infinity
+EOF
 baseInsertService minikube-automount
 
 #======================================
@@ -119,10 +131,6 @@ ln -sf /mnt/sda1/var/lib/rkt-etc /etc/rkt
 
 ln -sf /mnt/sda1/var/log /tmp/log
 
-ln -sf /mnt/sda1/var/lib/boot2docker /var/lib/boot2docker
-ln -sf /mnt/sda1/var/lib/cni /var/lib/cni
-ln -sf /mnt/sda1/var/lib/docker /var/lib/docker
-ln -sf /mnt/sda1/var/lib/kubelet /var/lib/kubelet
 ln -sf /mnt/sda1/var/lib/localkube /var/lib/localkube
 
 #======================================
