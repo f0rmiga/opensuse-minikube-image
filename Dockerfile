@@ -1,13 +1,20 @@
 FROM opensuse/leap:15.0
 
-RUN zypper refresh
-RUN zypper --non-interactive dup
-RUN zypper --non-interactive install git
-RUN zypper --non-interactive install syslinux
-RUN zypper --non-interactive install xorriso
-RUN zypper --non-interactive install gfxboot
-RUN zypper --non-interactive install python3-kiwi
-RUN zypper --non-interactive install checkmedia
+RUN set -o errexit -o nounset -o xtrace \
+  ; zypper --non-interactive refresh \
+  ; zypper --non-interactive dup \
+  ; zypper --non-interactive install \
+    checkmedia \
+    gfxboot \
+    git-core \
+    patch \
+    python3-kiwi \
+    syslinux \
+    xorriso \
+  ;
+
+COPY kiwi-isolinux-template.diff /
+RUN patch -p0 -i /kiwi-isolinux-template.diff
 
 ARG DESCRIPTION
 ENV DESCRIPTION $DESCRIPTION
