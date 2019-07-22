@@ -16,6 +16,7 @@
       flags="overlay"
       image="iso"
       kernelcmdline="net.ifnames=0 swapaccount=1"
+      bootloader_console="serial"
       volid="minikube-openSUSE"/>
     <version>1.0.0</version>
     <packagemanager>zypper</packagemanager>
