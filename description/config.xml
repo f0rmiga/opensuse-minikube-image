@@ -7,7 +7,7 @@
   <description type="system">
     <author>Thulio Ferraz Assis</author>
     <contact>tassis@suse.com</contact>
-    <specification>A Minikube image based on openSUSE Leap 15.0</specification>
+    <specification>A Minikube image based on openSUSE Leap</specification>
   </description>
   <preferences>
     <type
@@ -57,7 +57,6 @@
     <package name="nfs-kernel-server"/>
     <package name="parted"/>
     <package name="patterns-openSUSE-base"/>
-    <!-- <package name="python"/> -->
     <package name="rsync"/>
     <package name="socat"/>
     <package name="squashfs"/>
@@ -81,20 +80,20 @@
     imageinclude="false"
     type="rpm-md"
   >
-    <source path="obs://Virtualization:containers/openSUSE_Leap_15.0"/>
+    <source path="obs://Virtualization:containers/openSUSE_Leap_15.1"/>
   </repository>
   <repository
     alias="OSS Updates"
     imageinclude="false"
     type="rpm-md"
   >
-    <source path="obs://openSUSE:Leap:15.0:Update/standard"/>
+    <source path="obs://openSUSE:Leap:15.1:Update/standard"/>
   </repository>
   <repository
     alias="OSS"
     imageinclude="false"
     type="rpm-md"
   >
-    <source path="obs://openSUSE:Leap:15.0/standard"/>
+    <source path="obs://openSUSE:Leap:15.1/standard"/>
   </repository>
 </image>
