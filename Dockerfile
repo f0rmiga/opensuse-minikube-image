@@ -13,8 +13,8 @@ RUN set -o errexit -o nounset -o xtrace \
     xorriso \
   ;
 
-COPY kiwi-isolinux-template.diff /
-RUN patch -p0 -i /kiwi-isolinux-template.diff
+COPY patches/kiwi-isolinux-template.diff /patches/
+RUN patch -p0 -i /patches/kiwi-isolinux-template.diff
 
 ARG DESCRIPTION
 ENV DESCRIPTION $DESCRIPTION
@@ -22,8 +22,7 @@ ARG OUTPUT
 ENV OUTPUT $OUTPUT
 ENV INTERNAL_OUTPUT /output
 
-CMD \
-  set -x; \
-  mkdir -p "${INTERNAL_OUTPUT}"; \
-  kiwi-ng --type iso system build --description "${DESCRIPTION}" --target-dir "${INTERNAL_OUTPUT}" \
-  && cp "${INTERNAL_OUTPUT}"/*.iso "${OUTPUT}"
+CMD set -x \
+  ; mkdir -p "${INTERNAL_OUTPUT}" \
+  ; kiwi-ng --type iso system build --description "${DESCRIPTION}" --target-dir "${INTERNAL_OUTPUT}" \
+    && cp "${INTERNAL_OUTPUT}"/*.iso "${OUTPUT}"
