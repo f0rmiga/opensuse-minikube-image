@@ -24,5 +24,5 @@ ENV INTERNAL_OUTPUT /output
 
 CMD set -x \
   ; mkdir -p "${INTERNAL_OUTPUT}" \
-  ; kiwi-ng --type iso system build --description "${DESCRIPTION}" --target-dir "${INTERNAL_OUTPUT}" \
+  ; kiwi-ng ${DEBUG:+--debug --color-output} --type iso system build --description "${DESCRIPTION}" --target-dir "${INTERNAL_OUTPUT}" \
     && cp "${INTERNAL_OUTPUT}"/*.iso "${OUTPUT}"

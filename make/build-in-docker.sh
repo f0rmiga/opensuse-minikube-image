@@ -28,6 +28,7 @@ docker build \
 
 docker run \
   --tty --interactive --rm --privileged \
+  ${DEBUG:+--env DEBUG=1} \
   --volume "${OUTPUT}:${MOUNTED_OUTPUT}" \
   --volume "${DESCRIPTION}:${MOUNTED_DESCRIPTION}" \
   "${IMAGE_NAME}"
