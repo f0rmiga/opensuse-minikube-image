@@ -13,4 +13,4 @@ build-in-docker:
 	make/build-in-docker.sh $(DESCRIPTION) $(OUTPUT)
 
 clean:
-	rm -rf $(OUTPUT)
+	make/clean.sh $(OUTPUT)
