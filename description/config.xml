@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kiwi [
+  <!ENTITY version "15.0">
+]>
 
 <image
   name="minikube-openSUSE"
@@ -76,24 +79,17 @@
     <package name="udev"/>
   </packages>
   <repository
-    alias="Virtualization:containers"
-    imageinclude="false"
-    type="rpm-md"
-  >
-    <source path="obs://Virtualization:containers/openSUSE_Leap_15.1"/>
-  </repository>
-  <repository
     alias="OSS Updates"
     imageinclude="false"
     type="rpm-md"
   >
-    <source path="obs://openSUSE:Leap:15.1:Update/standard"/>
+    <source path="obs://openSUSE:Leap:&version;:Update/standard"/>
   </repository>
   <repository
     alias="OSS"
     imageinclude="false"
     type="rpm-md"
   >
-    <source path="obs://openSUSE:Leap:15.1/standard"/>
+    <source path="obs://openSUSE:Leap:&version;/standard"/>
   </repository>
 </image>
