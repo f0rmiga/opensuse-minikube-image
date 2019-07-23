@@ -15,4 +15,8 @@ if [ -z "${OUTPUT}" ]; then
   exit 1
 fi
 
-sudo kiwi-ng --type iso system build --description "${DESCRIPTION}" --target-dir "${OUTPUT}"
+sudo kiwi-ng \
+  ${DEBUG:+--debug --color-output} \
+  --type iso system build \
+  --description "${DESCRIPTION}" \
+  --target-dir "${OUTPUT}"
