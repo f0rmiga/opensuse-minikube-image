@@ -50,6 +50,7 @@ Environment=DOCKER_RAMDISK=yes
 LimitNOFILE=infinity
 EOF
 baseInsertService minikube-automount
+baseInsertService docker
 
 #======================================
 # Setup default target, multi-user.
