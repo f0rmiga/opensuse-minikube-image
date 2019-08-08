@@ -36,21 +36,8 @@ rm /root/virtualization-containers.key
 baseInsertService sshd
 baseInsertService chronyd
 
-mkdir -p /etc/systemd/system/docker.service.d/
-cat >> /etc/systemd/system/docker.service.d/20-extra-minikube.conf << 'EOF'
-# Extra settings that don't seem to be picked up by KVM !?
-[Unit]
-After=minikube-automount.service
-Requires=minikube-automount.service
-
-[Service]
-# DOCKER_RAMDISK disables pivot_root in Docker, using MS_MOVE instead.
-Environment=DOCKER_RAMDISK=yes
-
-LimitNOFILE=infinity
-EOF
+ln -s --no-target-directory /usr/lib/systemd /lib/systemd
 baseInsertService minikube-automount
-baseInsertService docker
 
 #======================================
 # Setup default target, multi-user.
@@ -138,7 +125,7 @@ ln -sf /mnt/sda1/var/lib/localkube /var/lib/localkube
 # Boot symlinks.
 #--------------------------------------
 
-ln -sf $(readlink /boot/vmlinuz) /boot/bzimage
+ln -sf "$(readlink /boot/vmlinuz)" /boot/bzimage
 
 #--------------------------------------
 
