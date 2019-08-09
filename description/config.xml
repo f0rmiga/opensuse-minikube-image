@@ -18,14 +18,13 @@
       firmware="bios"
       flags="overlay"
       image="iso"
-      kernelcmdline="net.ifnames=0 swapaccount=1"
+      kernelcmdline="net.ifnames=0 swapaccount=1 console=ttyS0"
       bootloader_console="serial"
       volid="minikube-openSUSE"/>
     <version>0.1.4</version>
     <packagemanager>zypper</packagemanager>
     <locale>en_US</locale>
     <keytable>us</keytable>
-    <timezone>America/Vancouver</timezone>
     <rpm-excludedocs>true</rpm-excludedocs>
     <rpm-check-signatures>false</rpm-check-signatures>
   </preferences>
