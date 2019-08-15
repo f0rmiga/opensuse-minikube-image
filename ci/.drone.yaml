@@ -1,0 +1,17 @@
+---
+kind: pipeline
+name: default
+
+steps:
+- name: build
+  image: thulioassis/opensuse-minikube-image-ci:latest
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - make build-in-docker
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock

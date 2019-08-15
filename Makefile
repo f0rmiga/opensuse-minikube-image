@@ -11,3 +11,6 @@ build-in-docker:
 
 clean:
 	make/clean.sh $(OUTPUT)
+
+ci-image:
+	ci/make/build.sh $(MAKEFILE_DIR)
