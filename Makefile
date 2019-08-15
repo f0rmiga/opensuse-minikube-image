@@ -6,9 +6,6 @@ OUTPUT := $(MAKEFILE_DIR)/output
 
 .PHONY: build clean
 
-build:
-	make/build.sh $(DESCRIPTION) $(OUTPUT)
-
 build-in-docker:
 	make/build-in-docker.sh $(DESCRIPTION) $(OUTPUT)
 
