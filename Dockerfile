@@ -1,9 +1,12 @@
-FROM opensuse/leap:15.0
+FROM opensuse/leap:15.1
 
 RUN set -o errexit -o nounset -o xtrace \
-  ; zypper --non-interactive refresh \
+  ; zypper --non-interactive addrepo --check \
+    obs://Virtualization:Appliances:Builder \
+          Virtualization:Appliances:Builder \
+  ; zypper --gpg-auto-import-keys --non-interactive refresh \
   ; zypper --non-interactive dup \
-  ; zypper --non-interactive install \
+  ; zypper --non-interactive install --details \
     checkmedia \
     gfxboot \
     git-core \
@@ -12,9 +15,6 @@ RUN set -o errexit -o nounset -o xtrace \
     syslinux \
     xorriso \
   ;
-
-COPY patches/kiwi-isolinux-template.diff /patches/
-RUN patch -p0 -i /patches/kiwi-isolinux-template.diff
 
 ARG DESCRIPTION
 ENV DESCRIPTION $DESCRIPTION
