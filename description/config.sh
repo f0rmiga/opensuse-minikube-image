@@ -62,26 +62,33 @@ suseConfig
 #======================================
 # Disable UseDNS.
 #--------------------------------------
-printf "%b" "
-UseDNS no
-GSSAPIAuthentication no
-" >> /etc/ssh/sshd_config
+cat <<'EOF' > /etc/ssh/sshd_config
+MaxSessions 1000
+
+AuthorizedKeysFile	.ssh/authorized_keys
+
+GatewayPorts yes
+PrintMotd yes
+PermitTunnel yes
+Subsystem	sftp	/usr/libexec/sftp-server
+EOF
 
 #======================================
 # Fix zypper defaults.
 #--------------------------------------
-printf "%b" "
+cat <<'EOF' >> /etc/zypp/zypp.conf
+
 solver.allowVendorChange = true
 solver.onlyRequires = true
-" >> /etc/zypp/zypp.conf
+EOF
 
 #======================================
 # Write sudoers file.
 #--------------------------------------
-printf "%b" "
+cat <<'EOF' > /etc/sudoers
 root ALL=(ALL) ALL
 %wheel ALL=(ALL) NOPASSWD: ALL
-" >> /etc/sudoers
+EOF
 
 #======================================
 # Set $PATH for the docker user.
