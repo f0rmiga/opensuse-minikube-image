@@ -40,7 +40,7 @@
       password="tcuser"
       pwdformat="plain"
       home="/home/docker"
-      groups="docker"/>
+      groups="docker,wheel,vboxsf"/>
   </users>
   <packages type="image">
     <package name="autofs"/>
