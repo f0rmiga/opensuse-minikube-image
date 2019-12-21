@@ -81,6 +81,13 @@ root ALL=(ALL) ALL
 " >> /etc/sudoers
 
 #======================================
+# Set $PATH for the docker user.
+#--------------------------------------
+
+echo "" >> /home/docker/.bashrc
+echo 'export PATH="/bin:/sbin:/usr/bin:/usr/sbin"' >> /home/docker/.bashrc
+
+#======================================
 # Disable multi kernel.
 #--------------------------------------
 sed -i 's/^multiversion/# multiversion/' /etc/zypp/zypp.conf
