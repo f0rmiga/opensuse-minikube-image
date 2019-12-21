@@ -5,12 +5,15 @@ set -o nounset
 #======================================
 # Load functions.
 #--------------------------------------
+# shellcheck disable=SC1091
 test -f /.kconfig && source /.kconfig
+# shellcheck disable=SC1091
 test -f /.profile && source /.profile
 
 #======================================
 # Greet.
 #--------------------------------------
+# shellcheck disable=SC2154
 echo "Configure image: [$kiwi_iname]..."
 
 #======================================
@@ -76,8 +79,16 @@ solver.onlyRequires = true
 # Write sudoers file.
 #--------------------------------------
 printf "%b" "
-docker ALL=(ALL) NOPASSWD: ALL
-" >> /etc/sudoers.d/docker
+root ALL=(ALL) ALL
+%wheel ALL=(ALL) NOPASSWD: ALL
+" >> /etc/sudoers
+
+#======================================
+# Set $PATH for the docker user.
+#--------------------------------------
+
+echo "" >> /home/docker/.bashrc
+echo 'export PATH="/bin:/sbin:/usr/bin:/usr/sbin"' >> /home/docker/.bashrc
 
 #======================================
 # Disable multi kernel.

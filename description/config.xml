@@ -40,7 +40,7 @@
       password="tcuser"
       pwdformat="plain"
       home="/home/docker"
-      groups="docker"/>
+      groups="docker,wheel,vboxsf"/>
   </users>
   <packages type="image">
     <package name="autofs"/>
@@ -49,8 +49,11 @@
     <package name="curl"/>
     <package name="docker"/>
     <package name="dracut-kiwi-live"/>
+    <package name="ebtables"/>
+    <package name="ethtool"/>
     <package name="ifplugd"/>
     <package name="iproute2"/>
+    <package name="iptables"/>
     <package name="iputils"/>
     <package name="kernel-default"/>
     <package name="less"/>
