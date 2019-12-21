@@ -76,8 +76,9 @@ solver.onlyRequires = true
 # Write sudoers file.
 #--------------------------------------
 printf "%b" "
-docker ALL=(ALL) NOPASSWD: ALL
-" >> /etc/sudoers.d/docker
+root ALL=(ALL) ALL
+%wheel ALL=(ALL) NOPASSWD: ALL
+" >> /etc/sudoers
 
 #======================================
 # Disable multi kernel.
