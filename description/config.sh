@@ -5,12 +5,15 @@ set -o nounset
 #======================================
 # Load functions.
 #--------------------------------------
+# shellcheck disable=SC1091
 test -f /.kconfig && source /.kconfig
+# shellcheck disable=SC1091
 test -f /.profile && source /.profile
 
 #======================================
 # Greet.
 #--------------------------------------
+# shellcheck disable=SC2154
 echo "Configure image: [$kiwi_iname]..."
 
 #======================================
