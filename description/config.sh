@@ -65,6 +65,10 @@ suseConfig
 printf "%b" "
 UseDNS no
 GSSAPIAuthentication no
+MaxSessions 200
+UsePAM no
+X11Forwarding no
+PrintLastLog no
 " >> /etc/ssh/sshd_config
 
 #======================================
@@ -89,6 +93,15 @@ root ALL=(ALL) ALL
 
 echo "" >> /home/docker/.bashrc
 echo 'export PATH="/bin:/sbin:/usr/bin:/usr/sbin"' >> /home/docker/.bashrc
+
+#======================================
+# Extra docker configuration
+#--------------------------------------
+perl -p -i -e '
+# Recommended by minikube
+# https://kubernetes.io/docs/setup/production-environment/container-runtimes/
+s@^(DOCKER_OPTS=".*?) *(")@$1 --exec-opt=native.cgroupdriver=systemd $2@
+' /etc/sysconfig/docker
 
 #======================================
 # Disable multi kernel.

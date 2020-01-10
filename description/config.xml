@@ -21,7 +21,7 @@
       kernelcmdline="net.ifnames=0 swapaccount=1 console=ttyS0"
       bootloader_console="serial"
       volid="minikube-openSUSE"/>
-    <version>0.1.5</version>
+    <version>0.1.6</version>
     <packagemanager>zypper</packagemanager>
     <locale>en_US</locale>
     <keytable>us</keytable>
@@ -80,18 +80,15 @@
     <package name="openSUSE-release"/>
     <package name="udev"/>
   </packages>
-  <repository
-    alias="OSS Updates"
-    imageinclude="false"
-    type="rpm-md"
-  >
+  <!-- This is only available for Leap 15.1 and above
+  <repository type="rpm-md" alias="kiwi" priority="1">
+    <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_&version;"/>
+  </repository>
+  -->
+  <repository type="rpm-md" imageinclude="true" alias="updates">
     <source path="obs://openSUSE:Leap:&version;:Update/standard"/>
   </repository>
-  <repository
-    alias="OSS"
-    imageinclude="false"
-    type="rpm-md"
-  >
+  <repository type="rpm-md" imageinclude="true" alias="oss">
     <source path="obs://openSUSE:Leap:&version;/standard"/>
   </repository>
 </image>
