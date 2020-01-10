@@ -1,8 +1,0 @@
-[oss]
-name=Main Repository (OSS)
-enabled=1
-autorefresh=1
-baseurl=http://download.opensuse.org/distribution/leap/15.0/repo/oss/
-path=/
-type=yast2
-keeppackages=0
