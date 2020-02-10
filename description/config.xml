@@ -91,4 +91,7 @@
   <repository type="rpm-md" imageinclude="true" alias="oss">
     <source path="obs://openSUSE:Leap:&version;/standard"/>
   </repository>
+  <repository type="rpm-md" imageinclude="true" alias="kernel">
+    <source path="obs://Kernel:stable/standard"/>
+  </repository>
 </image>
