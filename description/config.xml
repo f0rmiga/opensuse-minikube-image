@@ -21,7 +21,7 @@
       kernelcmdline="net.ifnames=0 swapaccount=1 console=ttyS0"
       bootloader_console="serial"
       volid="minikube-openSUSE"/>
-    <version>0.1.6</version>
+    <version>0.1.7</version>
     <packagemanager>zypper</packagemanager>
     <locale>en_US</locale>
     <keytable>us</keytable>
