@@ -43,8 +43,10 @@
       groups="docker,wheel,vboxsf"/>
   </users>
   <packages type="image">
+    <package name="acl"/>
     <package name="autofs"/>
     <package name="chrony"/>
+    <package name="conntrack-tools"/>
     <package name="cronie"/>
     <package name="curl"/>
     <package name="docker"/>
