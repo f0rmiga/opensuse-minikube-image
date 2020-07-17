@@ -18,7 +18,7 @@
       firmware="bios"
       flags="overlay"
       image="iso"
-      kernelcmdline="net.ifnames=0 swapaccount=1 console=ttyS0"
+      kernelcmdline="root=/dev/sr0 loglevel=3 console=ttyS0 noembed nomodeset norestore waitusb=10 random.trust_cpu=on hw_rng_model=virtio systemd.legacy_systemd_cgroup_controller=yes net.ifnames=0 swapaccount=1"
       bootloader_console="serial"
       volid="minikube-openSUSE"/>
     <version>0.1.7</version>
