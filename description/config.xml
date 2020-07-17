@@ -18,7 +18,7 @@
       firmware="bios"
       flags="overlay"
       image="iso"
-      kernelcmdline="net.ifnames=0 swapaccount=1 console=ttyS0"
+      kernelcmdline="root=/dev/sr0 loglevel=3 console=ttyS0 noembed nomodeset norestore waitusb=10 random.trust_cpu=on hw_rng_model=virtio systemd.legacy_systemd_cgroup_controller=yes net.ifnames=0 swapaccount=1"
       bootloader_console="serial"
       volid="minikube-openSUSE"/>
     <version>0.1.7</version>
@@ -43,8 +43,10 @@
       groups="docker,wheel,vboxsf"/>
   </users>
   <packages type="image">
+    <package name="acl"/>
     <package name="autofs"/>
     <package name="chrony"/>
+    <package name="conntrack-tools"/>
     <package name="cronie"/>
     <package name="curl"/>
     <package name="docker"/>
@@ -80,11 +82,6 @@
     <package name="openSUSE-release"/>
     <package name="udev"/>
   </packages>
-  <!-- This is only available for Leap 15.1 and above
-  <repository type="rpm-md" alias="kiwi" priority="1">
-    <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_&version;"/>
-  </repository>
-  -->
   <repository type="rpm-md" imageinclude="true" alias="updates">
     <source path="obs://openSUSE:Leap:&version;:Update/standard"/>
   </repository>
