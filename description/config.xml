@@ -80,11 +80,6 @@
     <package name="openSUSE-release"/>
     <package name="udev"/>
   </packages>
-  <!-- This is only available for Leap 15.1 and above
-  <repository type="rpm-md" alias="kiwi" priority="1">
-    <source path="obs://Virtualization:Appliances:Builder/openSUSE_Leap_&version;"/>
-  </repository>
-  -->
   <repository type="rpm-md" imageinclude="true" alias="updates">
     <source path="obs://openSUSE:Leap:&version;:Update/standard"/>
   </repository>
