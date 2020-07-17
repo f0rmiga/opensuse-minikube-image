@@ -1,9 +1,6 @@
-FROM opensuse/leap:15.1
+FROM opensuse/leap:15.2
 
 RUN set -o errexit -o nounset -o xtrace \
-  ; zypper --non-interactive addrepo --check \
-    obs://Virtualization:Appliances:Builder \
-          Virtualization:Appliances:Builder \
   ; zypper --gpg-auto-import-keys --non-interactive refresh \
   ; zypper --non-interactive dup \
   ; zypper --non-interactive install --details \
